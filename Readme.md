@@ -43,7 +43,7 @@ docker build -t gestao-condominio-api -f GestaoCondominio.ControlePortaria.Api/D
 Execute o container com o comando:
 
 ```bash
-docker run -d -p 8080:8080 -p 8081:8081 --name condominio-api gestao-condominio-api
+docker run -d -p 8090:8090 -p 8091:8091 --name condominio-api gestao-condominio-api
 ```
 
 🔹 Isso fará com que:

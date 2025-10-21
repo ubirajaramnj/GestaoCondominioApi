@@ -1,6 +1,6 @@
 [
   {
-    "Id": "fd215b22-1a65-482d-92b0-d39c5eeb1f4a",
+    "Id": "86821e41-0bc9-41b3-af19-234439539f4c",
     "CondominioId": "SOLARITAC",
     "Tipo": "Visitante",
     "Periodo": "Unico",
@@ -9,38 +9,31 @@
     "Telefone": "21993901365",
     "Cpf": "06497502769",
     "Rg": "3424332432",
-    "Empresa": "",
-    "Cnpj": "",
-    "DataInicio": "2025-10-17",
-    "DataFim": "2025-10-20",
-    "Veiculo": {
-      "Placa": "FCS7E57",
-      "Marca": "Jeep",
-      "Modelo": "Compass"
-    },
+    "DataInicio": "2025-10-23",
+    "DataFim": "2025-10-23",
     "Autorizador": {
       "Nome": "Bira",
       "Telefone": "(11) 99999-9999",
       "CodigoDaUnidade": "R01-QDJ-26",
-      "DataHora": "2025-10-16T21:47:20.136+00:00",
-      "DataHoraAutorizacao": "2025-10-16T21:47:21.648+00:00"
+      "DataHora": "2025-10-21T20:28:59.777+00:00",
+      "DataHoraAutorizacao": "2025-10-21T20:28:59.777+00:00"
     },
     "InformacoesDispositivo": {
-      "DataHora": "2025-10-16T21:47:21.648+00:00",
+      "DataHora": "2025-10-21T20:28:59.777+00:00",
       "Dispositivo": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
       "Navegador": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
       "Linguagem": "en-US",
       "Plataforma": "Win32",
       "Ip": "A ser coletado pelo backend"
     },
-    "CodigoAcesso": "00E1DFAB",
+    "CodigoAcesso": "E72779AD",
     "Status": "Autorizado",
-    "CreatedAt": "2025-10-16T21:47:22.659+00:00",
-    "UpdatedAt": "2025-10-16T21:47:22.659+00:00",
+    "CreatedAt": "2025-10-21T20:29:33.6411805+00:00",
+    "UpdatedAt": "2025-10-21T20:29:33.6412566+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
     "Logs": [
       {
-        "Quando": "2025-10-17T21:30:37.4943055+00:00",
+        "Quando": "2025-10-21T20:29:33.641982+00:00",
         "UsuarioId": "MORADOR:dummy",
         "Tipo": "Criacao",
         "Mensagem": "Autoriza\u00E7\u00E3o criada"

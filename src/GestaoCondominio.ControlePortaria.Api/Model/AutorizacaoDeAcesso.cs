@@ -68,7 +68,7 @@
             var local = TimeZoneInfo.ConvertTime(agoraUtc, tz).DateTime;
             var hoje = DateOnly.FromDateTime(local);
 
-            if (Periodo == PeriodoAutorizacao.Recorrente)
+            if (Periodo == PeriodoAutorizacao.Intervalo)
             {
                 if (!DiasSemanaPermitidos.Contains(local.DayOfWeek)) return false;
 
@@ -110,7 +110,7 @@
     public enum PeriodoAutorizacao
     {
         Unico = 0,
-        Recorrente = 1
+        Intervalo = 1
     }
 
     public enum StatusAutorizacao

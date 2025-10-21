@@ -1,6 +1,5 @@
 ﻿namespace GestaoCondominio.ControlePortaria.Api.DTOs
 {
-
     public sealed class CreateAutorizacaoRequest
     {
         public string? Id { get; set; }               // opcional na criação
@@ -16,21 +15,21 @@
         public string? Empresa { get; set; }
         public string? Cnpj { get; set; }
 
-        public string Periodo { get; set; } = "unico"; // "unico" | "recorrente"
+        public string Periodo { get; set; } = "unico"; // "unico" | "intervalo"
         public DateOnly DataInicio { get; set; }
         public DateOnly? DataFim { get; set; }
 
         public VeiculoDto? Veiculo { get; set; }
 
-        public AutorizacaoDetalheDto Autorizacao { get; set; } = default!;
+        public AutorizadorDto Autorizador { get; set; } = default!;
 
-        public InformacoesDispositivoDto? InformacoesDispositivo { get; set; }
+        public DispositivoDto? Dispositivo { get; set; }
 
         public DateTimeOffset? CreatedAt { get; set; }
         public DateTimeOffset? UpdatedAt { get; set; }
         public string? Status { get; set; } // "autorizado", etc.
 
-        // Recorrência (quando Periodo = "recorrente")
+        // Recorrência (quando Periodo = "intervalo")
         public List<string>? DiasSemanaPermitidos { get; set; }
         public TimeSpan? JanelaHorarioInicio { get; set; }
         public TimeSpan? JanelaHorarioFim { get; set; }
@@ -43,16 +42,16 @@
         public string? Modelo { get; set; }
     }
 
-    public sealed class AutorizacaoDetalheDto
+    public sealed class AutorizadorDto
     {
         public string Nome { get; set; } = default!;
         public string Telefone { get; set; } = default!;
-        public string CodigoDaUnidade { get; set; } = default!;
+        public string Unidade { get; set; } = default!;
         public DateTimeOffset DataHora { get; set; }
         public DateTimeOffset DataHoraAutorizacao { get; set; }
     }
 
-    public sealed class InformacoesDispositivoDto
+    public sealed class DispositivoDto
     {
         public DateTimeOffset DataHora { get; set; }
         public string Dispositivo { get; set; } = default!;

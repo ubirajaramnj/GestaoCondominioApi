@@ -23,16 +23,16 @@ public sealed class CreateAutorizacaoRequestValidator : AbstractValidator<Create
 
         RuleFor(x => x.DataInicio).LessThanOrEqualTo(x => x.DataFim);
 
-        RuleFor(x => x.Autorizacao).NotNull();
-        RuleFor(x => x.Autorizacao.CodigoDaUnidade).NotEmpty();
-        RuleFor(x => x.Autorizacao.Nome).NotEmpty();
-        RuleFor(x => x.Autorizacao.Telefone).NotEmpty();
+        RuleFor(x => x.Autorizador).NotNull();
+        RuleFor(x => x.Autorizador.Unidade).NotEmpty();
+        RuleFor(x => x.Autorizador.Nome).NotEmpty();
+        RuleFor(x => x.Autorizador.Telefone).NotEmpty();
 
-        When(x => x.Periodo.Equals("recorrente", StringComparison.OrdinalIgnoreCase), () =>
+        When(x => x.Periodo.Equals("intervalo", StringComparison.OrdinalIgnoreCase), () =>
         {
             RuleFor(x => x.DiasSemanaPermitidos)
                 .NotNull().Must(d => d!.Count > 0)
-                .WithMessage("Dias da semana obrigatórios quando periodo = recorrente.");
+                .WithMessage("Dias da semana obrigatórios quando periodo = intervalo.");
 
             RuleFor(x => x.JanelaHorarioInicio).NotNull();
             RuleFor(x => x.JanelaHorarioFim).NotNull();

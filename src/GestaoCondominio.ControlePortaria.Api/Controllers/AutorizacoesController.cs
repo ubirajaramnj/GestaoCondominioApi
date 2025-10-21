@@ -13,29 +13,29 @@ public class AutorizacoesController : ControllerBase
     private readonly IAutorizacaoService _service;
     private readonly IValidator<CreateAutorizacaoRequest> _validator;
 
-    public AutorizacoesController(IAutorizacaoService service, IValidator<CreateAutorizacaoRequest> validator)
+    public AutorizacoesController(IAutorizacaoService service) //, IValidator<CreateAutorizacaoRequest> validator
     {
         _service = service;
-        _validator = validator;
+        //_validator = validator;
     }
 
     // POST api/v2/autorizacoes
     [HttpPost]
     [ProducesResponseType(typeof(object), StatusCodes.Status201Created)]
-    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    //[ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Criar([FromBody] CreateAutorizacaoRequest req, CancellationToken ct)
     {
-        var result = await _validator.ValidateAsync(req, ct);
+        //var result = await _validator.ValidateAsync(req, ct);
         // With the following code:
-        if (!result.IsValid)
-        {
-            var validationProblemDetails = new ValidationProblemDetails(result.ToDictionary())
-            {
-                Title = "One or more validation errors occurred.",
-                Status = StatusCodes.Status400BadRequest
-            };
-            return BadRequest(validationProblemDetails);
-        }
+        //if (!result.IsValid)
+        //{
+        //    var validationProblemDetails = new ValidationProblemDetails(result.ToDictionary())
+        //    {
+        //        Title = "One or more validation errors occurred.",
+        //        Status = StatusCodes.Status400BadRequest
+        //    };
+        //    return BadRequest(validationProblemDetails);
+        //}
 
         var usuarioId = User?.Identity?.Name ?? "MORADOR:dummy";
         var clientIp = HttpContext.Connection.RemoteIpAddress?.ToString()

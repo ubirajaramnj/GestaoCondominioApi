@@ -18,13 +18,13 @@ public sealed class AutorizacaoService : IAutorizacaoService
         var tipo = req.Tipo.Equals("visitante", StringComparison.OrdinalIgnoreCase)
             ? TipoAutorizacao.Visitante : TipoAutorizacao.Prestador;
 
-        var periodo = req.Periodo.Equals("recorrente", StringComparison.OrdinalIgnoreCase)
-            ? PeriodoAutorizacao.Recorrente : PeriodoAutorizacao.Unico;
+        var periodo = req.Periodo.Equals("intervalo", StringComparison.OrdinalIgnoreCase)
+            ? PeriodoAutorizacao.Intervalo : PeriodoAutorizacao.Unico;
 
         // TODO: Inferir fuso do condomínio a partir de Data/condominios.json
         var tz = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
 
-        var dispositivoDto = req.InformacoesDispositivo ?? new InformacoesDispositivoDto
+        var dispositivoDto = req.Dispositivo ?? new DispositivoDto
         {
             DataHora = DateTimeOffset.UtcNow,
             Dispositivo = "unknown",
@@ -60,11 +60,11 @@ public sealed class AutorizacaoService : IAutorizacaoService
             Veiculo = req.Veiculo is null ? null : new Veiculo(req.Veiculo.Placa, req.Veiculo.Marca, req.Veiculo.Modelo),
 
             Autorizador = new Autorizador(
-                req.Autorizacao.Nome,
-                req.Autorizacao.Telefone,
-                req.Autorizacao.CodigoDaUnidade,
-                req.Autorizacao.DataHora,
-                req.Autorizacao.DataHoraAutorizacao
+                req.Autorizador.Nome,
+                req.Autorizador.Telefone,
+                req.Autorizador.Unidade,
+                req.Autorizador.DataHora,
+                req.Autorizador.DataHoraAutorizacao
             ),
 
             InformacoesDispositivo = new InformacoesDispositivo(

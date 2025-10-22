@@ -1,4 +1,3 @@
-Ôªøusing FluentValidation;
 using GestaoCondominio.ControlePortaria.Api.DTOs;
 using GestaoCondominio.ControlePortaria.Api.Model;
 using GestaoCondominio.ControlePortaria.Api.Services;
@@ -11,12 +10,10 @@ namespace GestaoCondominio.ControlePortaria.Api.Controllers;
 public class AutorizacoesController : ControllerBase
 {
     private readonly IAutorizacaoService _service;
-    private readonly IValidator<CreateAutorizacaoRequest> _validator;
 
-    public AutorizacoesController(IAutorizacaoService service) //, IValidator<CreateAutorizacaoRequest> validator
+    public AutorizacoesController(IAutorizacaoService service)
     {
         _service = service;
-        //_validator = validator;
     }
 
     // POST api/v2/autorizacoes
@@ -84,7 +81,7 @@ public class AutorizacoesController : ControllerBase
     {
         var usuarioId = User?.Identity?.Name ?? "MORADOR:dummy";
         var (ok, erro) = await _service.CancelarAsync(id, usuarioId, ct);
-        if (!ok && erro == "Autoriza√ß√£o n√£o encontrada.") return NotFound();
+        if (!ok && erro == "AutorizaÁ„o n„o encontrada.") return NotFound();
         if (!ok) return BadRequest(new ProblemDetails { Title = erro });
         return Ok(new { Id = id, Status = "Cancelado" });
     }
@@ -98,7 +95,7 @@ public class AutorizacoesController : ControllerBase
     {
         var usuarioId = "PORTARIA:dummy"; // substituir por claims de role Portaria
         var (ok, erro) = await _service.CheckInAsync(id, usuarioId, ct);
-        if (!ok && erro == "Autoriza√ß√£o n√£o encontrada.") return NotFound();
+        if (!ok && erro == "AutorizaÁ„o n„o encontrada.") return NotFound();
         if (!ok) return BadRequest(new ProblemDetails { Title = erro });
         return Ok(new { Id = id, Status = "Utilizado" });
     }
@@ -112,7 +109,7 @@ public class AutorizacoesController : ControllerBase
     {
         var usuarioId = "PORTARIA:dummy"; // substituir por claims de role Portaria
         var (ok, erro) = await _service.CheckOutAsync(id, usuarioId, ct);
-        if (!ok && erro == "Autoriza√ß√£o n√£o encontrada.") return NotFound();
+        if (!ok && erro == "AutorizaÁ„o n„o encontrada.") return NotFound();
         if (!ok) return BadRequest(new ProblemDetails { Title = erro });
         return Ok(new { Id = id, Status = "Finalizado" });
     }
@@ -126,7 +123,7 @@ public class AutorizacoesController : ControllerBase
     public async Task<IActionResult> ValidarCodigo([FromBody] ValidarCodigoRequest body, CancellationToken ct)
     {
         if (string.IsNullOrWhiteSpace(body.Codigo))
-            return BadRequest(new ProblemDetails { Title = "C√≥digo √© obrigat√≥rio." });
+            return BadRequest(new ProblemDetails { Title = "CÛdigo È obrigatÛrio." });
 
         var (valido, erro, a) = await _service.ValidarCodigoAsync(body.Codigo, ct);
         if (!valido) return BadRequest(new ProblemDetails { Title = erro });

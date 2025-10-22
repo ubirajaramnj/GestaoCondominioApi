@@ -1,9 +1,6 @@
 using GestaoCondominio.ControlePortaria.Api.Repositories;
 using GestaoCondominio.ControlePortaria.Api.Services;
 using System.Text.Json.Serialization;
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using GestaoCondominio.ControlePortaria.Api.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +16,6 @@ builder.Services.AddSingleton<IUnidadeService>(sp =>
 builder.Services.AddSingleton<IAutorizacaoRepository, AutorizacaoRepositoryJson>();
 builder.Services.AddScoped<IAutorizacaoService, AutorizacaoService>();
 
-// MVC + Controllers
 builder.Services.AddControllers()
     .AddJsonOptions(o =>
     {
@@ -28,17 +24,15 @@ builder.Services.AddControllers()
         //o.JsonSerializerOptions.PropertyNamingPolicy = null; // manter o casing dos DTOs V2
     });
 
-//var corsSpecificOrigins = builder.Configuration.GetSection("Cors:Origins").Get<string[]>();
+var corsSpecificOrigins = builder.Configuration.GetSection("Cors:Origins").Get<string[]>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder.WithOrigins(corsSpecificOrigins ?? [])
+                           .AllowAnyHeader()
+                           .AllowAnyMethod());
+});
 
-//// CORS - DEV(Permissivo - sem credenciais)
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("CorsDev", policy =>
-//    {
-//        policy
-//            .WithOrigins(corsSpecificOrigins ?? []);
-//    });
-//});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -58,9 +52,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-//app.UseCors("CorsDev");
+app.UseCors("AllowSpecificOrigin");
 
 app.MapControllers();
 

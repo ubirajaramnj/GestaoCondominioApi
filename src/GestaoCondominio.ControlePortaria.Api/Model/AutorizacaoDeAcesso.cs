@@ -89,7 +89,7 @@
         DateTimeOffset DataHora,     // Momento da requisição/autorização
         DateTimeOffset DataHoraAutorizacao // Momento da confirmação/efetivação
     );
-    
+
     public sealed record Veiculo(string Placa, string? Marca, string? Modelo);
 
     public sealed record InformacoesDispositivo(

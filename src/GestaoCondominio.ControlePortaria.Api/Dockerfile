@@ -10,16 +10,16 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 # Copia apenas o arquivo de projeto primeiro (para cache eficiente)
-COPY ["GestaoCondominio.ControlePortaria.Api.csproj", "./"]
+COPY ["GestaoCondominio.ControlePortaria.Api/GestaoCondominio.ControlePortaria.Api.csproj", "./"]
 RUN dotnet restore "GestaoCondominio.ControlePortaria.Api.csproj"
 
 # Copia todo o restante do código-fonte
 COPY . .
 
-# Compila a aplicação
-RUN dotnet build "GestaoCondominio.ControlePortaria.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
+# Compila a aplicação (sem apphost)
+RUN dotnet build "GestaoCondominio.ControlePortaria.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build /p:UseAppHost=false
 
-# Publica a aplicação
+# Publica a aplicação (sem apphost)
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "GestaoCondominio.ControlePortaria.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false

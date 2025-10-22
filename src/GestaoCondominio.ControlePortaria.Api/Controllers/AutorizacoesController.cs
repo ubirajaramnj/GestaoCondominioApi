@@ -46,6 +46,15 @@ public class AutorizacoesController : ControllerBase
         return CreatedAtAction(nameof(ObterPorId), new { id = entity.Id }, new
         {
             entity.Id,
+            entity.Nome,
+            entity.Tipo,
+            entity.Cpf,
+            entity.Rg,
+            entity.Periodo,
+            entity.Empresa,
+            entity.Cnpj,
+            entity.DataInicio,
+            entity.DataFim,
             entity.CodigoAcesso,
             entity.Status,
             Link = link

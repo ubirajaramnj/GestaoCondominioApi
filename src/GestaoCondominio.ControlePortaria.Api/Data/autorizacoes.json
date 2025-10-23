@@ -31,6 +31,8 @@
     "CreatedAt": "2025-10-21T20:29:33.6411805+00:00",
     "UpdatedAt": "2025-10-21T20:29:33.6412566+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
+    "CheckIns": [],
+    "CheckOuts": [],
     "Logs": []
   },
   {
@@ -65,6 +67,8 @@
     "CreatedAt": "2025-10-22T00:44:17.2538509+00:00",
     "UpdatedAt": "2025-10-22T00:44:17.2538522+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
+    "CheckIns": [],
+    "CheckOuts": [],
     "Logs": []
   },
   {
@@ -99,12 +103,57 @@
     "CreatedAt": "2025-10-22T00:46:23.9445477+00:00",
     "UpdatedAt": "2025-10-22T00:46:23.9445478+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
+    "CheckIns": [],
+    "CheckOuts": [],
+    "Logs": []
+  },
+  {
+    "Id": "aac68695-0a35-4930-8f75-9e2d4635c9e1",
+    "CondominioId": "SOLARITAC",
+    "Tipo": "Visitante",
+    "Periodo": "Unico",
+    "Nome": "Ubirajara Mendes Nunes Junior",
+    "Email": "ubirajara.mnj@gmail.com",
+    "Telefone": "21993901365",
+    "Cpf": "10706404769",
+    "Rg": "3424332432",
+    "DataInicio": "2025-10-24",
+    "DataFim": "2025-10-24",
+    "Autorizador": {
+      "Nome": "Bira",
+      "Telefone": "(11) 99999-9999",
+      "CodigoDaUnidade": "R01-QDJ-26",
+      "DataHora": "2025-10-23T04:14:40.691+00:00",
+      "DataHoraAutorizacao": "2025-10-23T04:14:40.691+00:00"
+    },
+    "InformacoesDispositivo": {
+      "DataHora": "2025-10-23T04:14:40.691+00:00",
+      "Dispositivo": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "Navegador": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "Linguagem": "en-US",
+      "Plataforma": "Win32",
+      "Ip": "A ser coletado pelo backend"
+    },
+    "CodigoAcesso": "4AD69C0C",
+    "Status": "Utilizado",
+    "CreatedAt": "2025-10-23T04:14:41.0568259+00:00",
+    "UpdatedAt": "2025-10-23T04:37:23.7506455+00:00",
+    "CriadoPorUsuarioId": "MORADOR:dummy",
+    "CheckIns": [
+      {
+        "CheckInId": "86ceb8fd-cd22-49a7-bb75-8a1b2ea3aa53",
+        "DataHora": "2025-10-23T04:37:23.7506442+00:00",
+        "DocumentoId": "cf66bf9f-4e41-4698-b2f2-88a378c0fca8",
+        "UsuarioPortariaId": "PORTARIA:dummy"
+      }
+    ],
+    "CheckOuts": [],
     "Logs": [
       {
-        "Quando": "2025-10-22T00:46:23.9445529+00:00",
-        "UsuarioId": "MORADOR:dummy",
-        "Tipo": "Criacao",
-        "Mensagem": "Autoriza\u00E7\u00E3o criada"
+        "Quando": "2025-10-23T04:37:23.7506457+00:00",
+        "UsuarioId": "PORTARIA:dummy",
+        "Tipo": "CheckIn",
+        "Mensagem": "Check-in registrado. DocumentoId: cf66bf9f-4e41-4698-b2f2-88a378c0fca8"
       }
     ]
   }

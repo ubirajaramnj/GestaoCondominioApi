@@ -7,10 +7,12 @@ namespace GestaoCondominio.ControlePortaria.Api.Services;
 public sealed class AutorizacaoService : IAutorizacaoService
 {
     private readonly IAutorizacaoRepository _repo;
+    private readonly IDocumentoService _documentoService;
 
-    public AutorizacaoService(IAutorizacaoRepository repo)
+    public AutorizacaoService(IAutorizacaoRepository repo, IDocumentoService documentoService)
     {
         _repo = repo;
+        _documentoService = documentoService;
     }
 
     public async Task<AutorizacaoDeAcesso> CriarAsync(CreateAutorizacaoRequest req, string usuarioId, string? clientIp, CancellationToken ct)
@@ -112,36 +114,70 @@ public sealed class AutorizacaoService : IAutorizacaoService
         return (true, null);
     }
 
-    public async Task<(bool Sucesso, string? Erro)> CheckInAsync(Guid id, string usuarioId, CancellationToken ct)
+    // ===== NOVO: Check-in com validação de documento =====
+    public async Task<(bool Sucesso, string? Erro, CheckInRegistro? CheckIn)> CheckInAsync(
+        Guid autorizacaoId,
+        Guid? documentoId,
+        string usuarioPortariaId,
+        string? observacoes,
+        CancellationToken ct)
     {
-        var a = await _repo.GetAsync(id, ct);
-        if (a is null) return (false, "Autorização não encontrada.");
+        var a = await _repo.GetAsync(autorizacaoId, ct);
+        if (a is null) return (false, "Autorização não encontrada.", null);
 
-        var tz = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
+        var tz = GetBrTimeZone();
 
+        // Ativar se em vigência
         a.AtivarSeEmVigencia(DateTimeOffset.UtcNow, tz);
-        return (false, "Autorização fora de vigência ou não permitida agora.");
 
-        a.Status = StatusAutorizacao.Utilizado;
-        a.UpdatedAt = DateTimeOffset.UtcNow;
-        a.Logs.Add(new(DateTimeOffset.UtcNow, usuarioId, "CheckIn", "Entrada registrada"));
+        // Validar se está permitido agora
+        //return (false, "Autorização fora de vigência ou não permitida neste momento.", null);
+
+        // Se é primeira entrada, validar documento
+        if (!a.TemCheckInRegistrado())
+        {
+            if (documentoId is null)
+                return (false, "Documento de identificação é obrigatório para o primeiro check-in.", null);
+
+            // Validar se documento existe
+            var documento = await _documentoService.ObterAsync(documentoId.Value, ct);
+            if (documento is null)
+                return (false, "Documento não encontrado.", null);
+
+            if (documento.AutorizacaoId != autorizacaoId)
+                return (false, "Documento não pertence a esta autorização.", null);
+        }
+
+        // Registrar check-in
+        var (sucesso, erro) = a.RegistrarCheckIn(documentoId, usuarioPortariaId, observacoes);
+        if (!sucesso) return (false, erro, null);
+
+        // Persistir
         await _repo.UpdateAsync(a, ct);
-        return (true, null);
+
+        var checkIn = a.CheckIns.Last();
+        return (true, null, checkIn);
     }
 
-    public async Task<(bool Sucesso, string? Erro)> CheckOutAsync(Guid id, string usuarioId, CancellationToken ct)
+    // ===== NOVO: Check-out =====
+    public async Task<(bool Sucesso, string? Erro, CheckOutRegistro? CheckOut)> CheckOutAsync(
+        Guid autorizacaoId,
+        string usuarioPortariaId,
+        string? observacoes,
+        CancellationToken ct)
     {
-        var a = await _repo.GetAsync(id, ct);
-        if (a is null) return (false, "Autorização não encontrada.");
+        var a = await _repo.GetAsync(autorizacaoId, ct);
+        if (a is null) return (false, "Autorização não encontrada.", null);
 
-        if (a.Status != StatusAutorizacao.Utilizado)
-            return (false, "Não é possível efetuar checkout sem check-in.");
+        // Registrar check-out
+        var (sucesso, erro) = a.RegistrarCheckOut(usuarioPortariaId, observacoes);
+        if (!sucesso) return (false, erro, null);
 
-        a.UpdatedAt = DateTimeOffset.UtcNow;
-        a.Logs.Add(new(DateTimeOffset.UtcNow, usuarioId, "CheckOut", "Saída registrada"));
-        // Opcional: não mudamos Status; ou criar um "Finalizado"
+        // Persistir
         await _repo.UpdateAsync(a, ct);
-        return (true, null);
+
+        var checkOut = a.CheckOuts.Last();
+        return (true, null, checkOut);
     }
 
     public async Task<(bool Valido, string? Erro, AutorizacaoDeAcesso? Autorizacao)> ValidarCodigoAsync(string codigo, CancellationToken ct)
@@ -150,7 +186,7 @@ public sealed class AutorizacaoService : IAutorizacaoService
         var a = list.FirstOrDefault(x => x.CodigoAcesso.Equals(codigo, StringComparison.OrdinalIgnoreCase));
         if (a is null) return (false, "Código inválido.", null);
 
-        var tz = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
+        var tz = GetBrTimeZone();
         a.AtivarSeEmVigencia(DateTimeOffset.UtcNow, tz);
         return (false, "Autorização não está válida neste momento.", a);
 
@@ -159,4 +195,10 @@ public sealed class AutorizacaoService : IAutorizacaoService
 
     private static DayOfWeek ParseDay(string s) =>
         Enum.TryParse<DayOfWeek>(s, true, out var d) ? d : throw new ArgumentException($"Dia inválido: {s}");
+
+    private static TimeZoneInfo GetBrTimeZone()
+    {
+        try { return TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"); } // Windows
+        catch { return TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo"); } // Linux
+    }
 }

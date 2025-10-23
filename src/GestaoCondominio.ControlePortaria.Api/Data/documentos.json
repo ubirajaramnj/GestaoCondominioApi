@@ -8,5 +8,65 @@
     "TamanhoBytes": 144731,
     "ContentType": "image/png",
     "CriadoEm": "2025-10-23T02:42:59.7010777+00:00"
+  },
+  {
+    "Id": "86168c4f-ff23-4b13-8f29-7b5700012b88",
+    "AutorizacaoId": "aac68695-0a35-4930-8f75-9e2d4635c9e1",
+    "Tipo": "identificacao",
+    "Nome": "comprovante-Ubirajara Mendes Nunes Junior-1760490932187.png",
+    "CaminhoArmazenado": "86168c4f-ff23-4b13-8f29-7b5700012b88.png",
+    "TamanhoBytes": 309439,
+    "ContentType": "image/png",
+    "CriadoEm": "2025-10-23T04:16:19.4760124+00:00"
+  },
+  {
+    "Id": "22f99521-7e17-40a4-a57d-3e741780592d",
+    "AutorizacaoId": "aac68695-0a35-4930-8f75-9e2d4635c9e1",
+    "Tipo": "identificacao",
+    "Nome": "logo-ancora.png",
+    "CaminhoArmazenado": "22f99521-7e17-40a4-a57d-3e741780592d.png",
+    "TamanhoBytes": 144731,
+    "ContentType": "image/png",
+    "CriadoEm": "2025-10-23T04:18:52.4149362+00:00"
+  },
+  {
+    "Id": "2fe7a6fa-862f-4b4f-94c5-f9d61ebd1ae8",
+    "AutorizacaoId": "aac68695-0a35-4930-8f75-9e2d4635c9e1",
+    "Tipo": "identificacao",
+    "Nome": "logo-ancora.png",
+    "CaminhoArmazenado": "2fe7a6fa-862f-4b4f-94c5-f9d61ebd1ae8.png",
+    "TamanhoBytes": 144731,
+    "ContentType": "image/png",
+    "CriadoEm": "2025-10-23T04:20:33.0843652+00:00"
+  },
+  {
+    "Id": "c0fcee28-e43f-4cf0-bd75-1406ac2c1297",
+    "AutorizacaoId": "aac68695-0a35-4930-8f75-9e2d4635c9e1",
+    "Tipo": "identificacao",
+    "Nome": "00001-icon-service-Monitor.png",
+    "CaminhoArmazenado": "c0fcee28-e43f-4cf0-bd75-1406ac2c1297.png",
+    "TamanhoBytes": 62612,
+    "ContentType": "image/png",
+    "CriadoEm": "2025-10-23T04:25:21.3729677+00:00"
+  },
+  {
+    "Id": "846ee73e-6380-4733-845d-67523654476a",
+    "AutorizacaoId": "aac68695-0a35-4930-8f75-9e2d4635c9e1",
+    "Tipo": "identificacao",
+    "Nome": "00012-icon-service-Application-Insights.png",
+    "CaminhoArmazenado": "846ee73e-6380-4733-845d-67523654476a.png",
+    "TamanhoBytes": 69769,
+    "ContentType": "image/png",
+    "CriadoEm": "2025-10-23T04:29:30.0672292+00:00"
+  },
+  {
+    "Id": "cf66bf9f-4e41-4698-b2f2-88a378c0fca8",
+    "AutorizacaoId": "aac68695-0a35-4930-8f75-9e2d4635c9e1",
+    "Tipo": "identificacao",
+    "Nome": "FORMUL\u00C1RIO DE CADASTRO.pdf",
+    "CaminhoArmazenado": "cf66bf9f-4e41-4698-b2f2-88a378c0fca8.pdf",
+    "TamanhoBytes": 188759,
+    "ContentType": "application/pdf",
+    "CriadoEm": "2025-10-23T04:31:56.9096737+00:00"
   }
 ]

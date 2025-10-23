@@ -48,6 +48,10 @@
         public DateTimeOffset UpdatedAt { get; set; } = DateTimeOffset.UtcNow;
         public string CriadoPorUsuarioId { get; init; } = default!;
 
+        // ===== NOVO: Histórico de Check-ins e Check-outs =====
+        public List<CheckInRegistro> CheckIns { get; } = new();
+        public List<CheckOutRegistro> CheckOuts { get; } = new();
+
         public List<LogEventoAutorizacao> Logs { get; } = new();
 
         // Ativa automaticamente quando a data atual está dentro da vigência.
@@ -79,6 +83,68 @@
 
             // Periodo = Unico (qualquer horário do(s) dia(s) de vigência)
             return true;
+        }
+
+        // ===== NOVO: Métodos para gerenciar check-ins =====
+
+        /// <summary>
+        /// Verifica se já existe check-in registrado para esta autorização.
+        /// </summary>
+        public bool TemCheckInRegistrado() => CheckIns.Count > 0;
+
+        /// <summary>
+        /// Verifica se há check-in sem check-out correspondente (visitante ainda dentro).
+        /// </summary>
+        public bool TemCheckInAberto()
+        {
+            if (CheckIns.Count == 0) return false;
+            var ultimoCheckIn = CheckIns.OrderByDescending(x => x.DataHora).First();
+            var checkOutCorrespondente = CheckOuts.FirstOrDefault(x => x.DataHora > ultimoCheckIn.DataHora);
+            return checkOutCorrespondente is null;
+        }
+
+        /// <summary>
+        /// Registra um check-in. Valida se documento é obrigatório (primeira entrada).
+        /// </summary>
+        public (bool Sucesso, string? Erro) RegistrarCheckIn(Guid? documentoId, string usuarioPortariaId, string? observacoes = null)
+        {
+            // Se é a primeira entrada e período é "Unico", documento é obrigatório
+            if (!TemCheckInRegistrado() && Periodo == PeriodoAutorizacao.Unico && documentoId is null)
+                return (false, "Documento de identificação é obrigatório para o primeiro check-in.");
+
+            // Se é a primeira entrada e período é "Recorrente", documento é obrigatório
+            if (!TemCheckInRegistrado() && Periodo == PeriodoAutorizacao.Intervalo && documentoId is null)
+                return (false, "Documento de identificação é obrigatório para o primeiro check-in.");
+
+            // Se já tem check-in aberto, não pode fazer novo check-in sem checkout
+            if (TemCheckInAberto())
+                return (false, "Existe um check-in aberto. Faça o check-out antes de um novo check-in.");
+
+            var checkIn = CheckInRegistro.Criar(documentoId, usuarioPortariaId, observacoes);
+            CheckIns.Add(checkIn);
+
+            Status = StatusAutorizacao.Utilizado;
+            UpdatedAt = DateTimeOffset.UtcNow;
+            Logs.Add(new(DateTimeOffset.UtcNow, usuarioPortariaId, "CheckIn", $"Check-in registrado. DocumentoId: {documentoId?.ToString() ?? "N/A"}"));
+
+            return (true, null);
+        }
+
+        /// <summary>
+        /// Registra um check-out.
+        /// </summary>
+        public (bool Sucesso, string? Erro) RegistrarCheckOut(string usuarioPortariaId, string? observacoes = null)
+        {
+            if (!TemCheckInAberto())
+                return (false, "Não há check-in aberto para fazer check-out.");
+
+            var checkOut = CheckOutRegistro.Criar(usuarioPortariaId, observacoes);
+            CheckOuts.Add(checkOut);
+
+            UpdatedAt = DateTimeOffset.UtcNow;
+            Logs.Add(new(DateTimeOffset.UtcNow, usuarioPortariaId, "CheckOut", "Check-out registrado."));
+
+            return (true, null);
         }
     }
 

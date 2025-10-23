@@ -27,6 +27,9 @@ builder.Services.AddSingleton<IUnidadeService>(sp =>
 builder.Services.AddSingleton<IAutorizacaoRepository, AutorizacaoRepositoryJson>();
 builder.Services.AddScoped<IAutorizacaoService, AutorizacaoService>();
 
+builder.Services.AddSingleton<IDocumentoRepository, DocumentoRepositoryJson>();
+builder.Services.AddScoped<IDocumentoService, DocumentoService>();
+
 builder.Services.AddControllers()
     .AddJsonOptions(o =>
     {

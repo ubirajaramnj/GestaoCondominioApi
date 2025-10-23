@@ -20,10 +20,10 @@
 	  <Content Update="Data\autorizacoes.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Data\condominios-test.json">
+    <Content Update="Data\condominios.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Data\condominios.json">
+    <Content Update="Data\documentos.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

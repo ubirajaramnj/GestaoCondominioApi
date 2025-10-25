@@ -30,6 +30,9 @@ builder.Services.AddScoped<IAutorizacaoService, AutorizacaoService>();
 builder.Services.AddSingleton<IDocumentoRepository, DocumentoRepositoryJson>();
 builder.Services.AddScoped<IDocumentoService, DocumentoService>();
 
+builder.Services.AddSingleton<IComprovanteRepository, ComprovanteRepositoryJson>();
+builder.Services.AddScoped<IComprovanteService, ComprovanteService>();
+
 builder.Services.AddControllers()
     .AddJsonOptions(o =>
     {

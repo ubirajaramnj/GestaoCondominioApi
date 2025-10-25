@@ -68,5 +68,25 @@
     "TamanhoBytes": 188759,
     "ContentType": "application/pdf",
     "CriadoEm": "2025-10-23T04:31:56.9096737+00:00"
+  },
+  {
+    "Id": "5ae39d72-ac47-4cdd-844c-688c3e99d175",
+    "AutorizacaoId": "9bf45040-1b2b-416c-9fc8-7b20659fd0a9",
+    "Tipo": "identificacao",
+    "Nome": "comprovante-Ubirajara Mendes Nunes Junior-1760490932187.png",
+    "CaminhoArmazenado": "5ae39d72-ac47-4cdd-844c-688c3e99d175.png",
+    "TamanhoBytes": 309439,
+    "ContentType": "image/png",
+    "CriadoEm": "2025-10-24T13:51:37.4630508+00:00"
+  },
+  {
+    "Id": "877da01c-7e93-40ea-8922-f23cc21d5395",
+    "AutorizacaoId": "027ec3ae-fb8a-49f9-bbe6-a386585becc9",
+    "Tipo": "identificacao",
+    "Nome": "9969E22B-B8B9-4A2A-BF75-3C22A7CE239B.jpeg",
+    "CaminhoArmazenado": "877da01c-7e93-40ea-8922-f23cc21d5395.jpeg",
+    "TamanhoBytes": 1433534,
+    "ContentType": "image/jpeg",
+    "CriadoEm": "2025-10-25T00:31:49.9548295+00:00"
   }
 ]

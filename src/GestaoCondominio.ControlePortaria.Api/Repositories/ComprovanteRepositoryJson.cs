@@ -47,7 +47,7 @@ public sealed class ComprovanteRepositoryJson : IComprovanteRepository
     public async Task<ArquivoDeComprovante?> GetAsync(Guid comprovanteId, CancellationToken ct)
     {
         var list = await ReadAllAsync(ct);
-        return list.FirstOrDefault(x => x.Id == comprovanteId);
+        return list.FirstOrDefault(x => x.AutorizacaoId == comprovanteId);
     }
 
     public async Task<IReadOnlyList<ArquivoDeComprovante>> QueryByAutorizacaoAsync(Guid autorizacaoId, CancellationToken ct)

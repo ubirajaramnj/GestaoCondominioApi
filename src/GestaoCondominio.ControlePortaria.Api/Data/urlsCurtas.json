@@ -68,5 +68,55 @@
     "CriadoEm": "2025-10-28T11:28:09.0377183+00:00",
     "ExpiracaoEm": "2025-11-04T11:28:09.0377183+00:00",
     "Ativo": true
+  },
+  {
+    "Id": "kbqxrruE",
+    "Nome": "UBIRAJARA MENDES NUNES JR",
+    "Telefone": "5521993901365",
+    "CodigoDaUnidade": "01J26",
+    "PalavraChave": "Malu",
+    "CriadoEm": "2025-10-28T11:57:01.8640809+00:00",
+    "ExpiracaoEm": "2025-11-04T11:57:01.8640809+00:00",
+    "Ativo": true
+  },
+  {
+    "Id": "h5UrN1Gi",
+    "Nome": "UBIRAJARA MENDES NUNES JR",
+    "Telefone": "5521993901365",
+    "CodigoDaUnidade": "01J26",
+    "PalavraChave": "Malu",
+    "CriadoEm": "2025-10-28T21:49:25.6989231+00:00",
+    "ExpiracaoEm": "2025-11-04T21:49:25.6989231+00:00",
+    "Ativo": true
+  },
+  {
+    "Id": "gMEPyJjy",
+    "Nome": "UBIRAJARA MENDES NUNES JR",
+    "Telefone": "5521993901365",
+    "CodigoDaUnidade": "01J26",
+    "PalavraChave": "Malu",
+    "CriadoEm": "2025-10-28T22:02:10.0865689+00:00",
+    "ExpiracaoEm": "2025-11-04T22:02:10.0865689+00:00",
+    "Ativo": true
+  },
+  {
+    "Id": "qqIPuu8E",
+    "Nome": "UBIRAJARA MENDES NUNES JR",
+    "Telefone": "5521993901365",
+    "CodigoDaUnidade": "01J26",
+    "PalavraChave": "Malu",
+    "CriadoEm": "2025-10-28T22:06:04.2438014+00:00",
+    "ExpiracaoEm": "2025-11-04T22:06:04.2438014+00:00",
+    "Ativo": true
+  },
+  {
+    "Id": "fAGgPlmJ",
+    "Nome": "UBIRAJARA MENDES NUNES JR",
+    "Telefone": "5521993901365",
+    "CodigoDaUnidade": "01J26",
+    "PalavraChave": "Malu",
+    "CriadoEm": "2025-10-28T22:08:01.3583824+00:00",
+    "ExpiracaoEm": "2025-11-04T22:08:01.3583824+00:00",
+    "Ativo": true
   }
 ]

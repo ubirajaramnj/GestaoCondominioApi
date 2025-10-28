@@ -170,18 +170,27 @@ public class ComprovantesController : ControllerBase
             }
 
             // Gerar link do comprovante (ajuste conforme sua URL base)
-            var caption = $@"✅ *Autorização de Acesso Aprovada*
-                *Visitante/Prestador:* {autorizacao.Nome}
-                *Tipo:* {autorizacao.Tipo}
-                *Período:* {autorizacao.DataInicio:dd/MM/yyyy} a {autorizacao.DataFim:dd/MM/yyyy}
-                *Código de Acesso:* {autorizacao.CodigoAcesso}
-                *Unidade:* {autorizacao.Autorizador.CodigoDaUnidade}
+            var caption = $@"✅ *Autorização de Acesso Aprovada* 
+*Autorizador:* {autorizacao.Autorizador.Nome}
+*Unidade:* {autorizacao.Autorizador.CodigoDaUnidade}
 
-                Clique no link abaixo para acessar o comprovante completo:
-                {linkComprovante}";
+*Tipo:* {autorizacao.Tipo}
+*Nome:* {autorizacao.Nome}
+*Período:* {autorizacao.DataInicio:dd/MM/yyyy} a {autorizacao.DataFim:dd/MM/yyyy}
+*Código de Acesso:* {autorizacao.CodigoAcesso}
+
+Clique no link abaixo para acessar o comprovante completo:
+{linkComprovante}";
 
             var (sucesso, messageId, erro) = await _mensageriaService.EnviarComprovanteAsync(
                 autorizacao.Telefone,
+                linkComprovante,
+                $"{autorizacao.Id}.pdf",
+                caption,
+                ct);
+
+            (sucesso, messageId, erro) = await _mensageriaService.EnviarComprovanteAsync(
+                autorizacao.Autorizador.Telefone,
                 linkComprovante,
                 $"{autorizacao.Id}.pdf",
                 caption,

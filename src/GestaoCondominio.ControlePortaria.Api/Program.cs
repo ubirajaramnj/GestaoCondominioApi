@@ -1,7 +1,6 @@
 using GestaoCondominio.ControlePortaria.Api.DTOs;
 using GestaoCondominio.ControlePortaria.Api.Repositories;
 using GestaoCondominio.ControlePortaria.Api.Services;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -36,6 +35,10 @@ builder.Services.AddScoped<IDocumentoService, DocumentoService>();
 
 builder.Services.AddSingleton<IComprovanteRepository, ComprovanteRepositoryJson>();
 builder.Services.AddScoped<IComprovanteService, ComprovanteService>();
+
+// DI para URLs encurtadas
+builder.Services.AddSingleton<IUrlCurtaRepository, UrlCurtaRepositoryJson>();
+builder.Services.AddScoped<IUrlCurtaService, UrlCurtaService>();
 
 // ===== NOVO: Configuração de Mensageria =====
 builder.Services.Configure<ConfiguracaoMensageria>(builder.Configuration.GetSection("Mensageria"));

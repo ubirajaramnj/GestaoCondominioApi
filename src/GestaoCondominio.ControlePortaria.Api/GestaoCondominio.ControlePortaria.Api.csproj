@@ -32,4 +32,6 @@
     <Folder Include="Comprovantes\" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://www.schemastore.org/aws-cdk-appconfig-featureflags-1.0.0.json" /></VisualStudio></ProjectExtensions>
+
 </Project>

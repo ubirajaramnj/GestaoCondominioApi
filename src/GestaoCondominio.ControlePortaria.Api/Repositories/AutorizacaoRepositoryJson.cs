@@ -56,7 +56,73 @@ public sealed class AutorizacaoRepositoryJson : IAutorizacaoRepository
     public async Task<AutorizacaoDeAcesso?> GetAsync(Guid id, CancellationToken ct)
     {
         var list = await ReadAllAsync(ct);
-        return list.FirstOrDefault(x => x.Id == id);
+        var autorizacao = list.FirstOrDefault(x => x.Id == id);
+
+        if (autorizacao is not null)
+        {
+            var tz = GetBrTimeZone();
+            //autorizacao.DefinirTimeZone(tz);
+        }
+
+        return autorizacao;
+    }
+
+    public async Task<IReadOnlyList<AutorizacaoDeAcesso>> QueryAsync(string? condominioId, CancellationToken ct)
+    {
+        var list = await ReadAllAsync(ct);
+        var tz = GetBrTimeZone();
+        IEnumerable<AutorizacaoDeAcesso> q = list;
+
+        if (!string.IsNullOrWhiteSpace(condominioId))
+            q = q.Where(x => string.Equals(x.CondominioId, condominioId, StringComparison.OrdinalIgnoreCase));
+
+        // Ordena por CreatedAt desc para navegação mais conveniente
+        q = q.OrderByDescending(x => x.CreatedAt);
+        return [.. q];
+    }
+
+    public async Task<IReadOnlyList<AutorizacaoDeAcesso>> QueryAsync(string? condominioId, DateOnly? data, CancellationToken ct)
+    {
+        var list = await ReadAllAsync(ct);
+        var tz = GetBrTimeZone();
+        IEnumerable<AutorizacaoDeAcesso> q = list;
+
+        if (!string.IsNullOrWhiteSpace(condominioId))
+            q = q.Where(x => string.Equals(x.CondominioId, condominioId, StringComparison.OrdinalIgnoreCase));
+
+        // Filtrar por dataInicio se fornecida
+        if (data.HasValue)
+            q = q.Where(x => x.DataInicio == data.Value);
+
+        // Ordena por CreatedAt desc para navegação mais conveniente
+        q = q.OrderByDescending(x => x.CreatedAt);
+        return [.. q];
+    }
+
+    public async Task<IReadOnlyList<AutorizacaoDeAcesso>> QueryAsync(string? condominioId, string? status, CancellationToken ct)
+    {
+        var list = await ReadAllAsync(ct);
+        IEnumerable<AutorizacaoDeAcesso> q = list;
+
+        if (!string.IsNullOrWhiteSpace(condominioId))
+            q = q.Where(x => string.Equals(x.CondominioId, condominioId, StringComparison.OrdinalIgnoreCase));
+
+        if (!string.IsNullOrWhiteSpace(status))
+        {
+            if (TryParseStatus(status, out var parsed))
+            {
+                q = q.Where(x => x.Status == parsed);
+            }
+            else
+            {
+                // fallback: tenta comparar string do enum
+                q = q.Where(x => string.Equals(x.Status.ToString(), status, StringComparison.OrdinalIgnoreCase));
+            }
+        }
+
+        // Ordena por CreatedAt desc para navegação mais conveniente
+        q = q.OrderByDescending(x => x.CreatedAt);
+        return q.ToList();
     }
 
     public async Task<IReadOnlyList<AutorizacaoDeAcesso>> QueryAsync(string? condominioId, string? unidadeCodigo, string? status, CancellationToken ct)
@@ -228,7 +294,6 @@ public sealed class AutorizacaoRepositoryJson : IAutorizacaoRepository
         // Map por nomes "humanos"
         switch (norm)
         {
-            case "pendente": status = StatusAutorizacao.Pendente; return true;
             case "autorizado":
             case "ativa":
             case "ativo":
@@ -254,5 +319,11 @@ public sealed class AutorizacaoRepositoryJson : IAutorizacaoRepository
 
         status = default;
         return false;
+    }
+
+    private static TimeZoneInfo GetBrTimeZone()
+    {
+        try { return TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"); } // Windows
+        catch { return TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo"); } // Linux
     }
 }

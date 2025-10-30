@@ -6,8 +6,14 @@ namespace GestaoCondominio.ControlePortaria.Api.Services
     public interface IAutorizacaoService
     {
         Task<AutorizacaoDeAcesso> CriarAsync(CreateAutorizacaoRequest req, string usuarioId, string? clientIp, CancellationToken ct);
+        
         Task<AutorizacaoDeAcesso?> ObterAsync(Guid id, CancellationToken ct);
+
+        Task<IReadOnlyList<AutorizacaoDeAcesso>> ListarAsync(string? condominioId, CancellationToken ct);
+        Task<IReadOnlyList<AutorizacaoDeAcesso>> ListarAsync(string? condominioId, DateOnly? data, CancellationToken ct);
+        Task<IReadOnlyList<AutorizacaoDeAcesso>> ListarAsync(string? condominioId, string? status, CancellationToken ct);
         Task<IReadOnlyList<AutorizacaoDeAcesso>> ListarAsync(string? condominioId, string? unidadeCodigo, string? status, CancellationToken ct);
+        
         Task<(bool Sucesso, string? Erro)> CancelarAsync(Guid id, string usuarioId, CancellationToken ct);
         
         // ===== NOVO: Métodos de Check-in/Check-out =====

@@ -72,6 +72,33 @@ public class AutorizacoesController : ControllerBase
         return Ok(a);
     }
 
+    // GET api/v2/autorizacoes/condominio/{condominioId}
+    [HttpGet("condominio/{condominioId}")]
+    [ProducesResponseType(typeof(IReadOnlyList<AutorizacaoDeAcesso>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> Listar(string? condominioId, CancellationToken ct)
+    {
+        var list = await _service.ListarAsync(condominioId, ct);
+        return Ok(list);
+    }
+
+    // GET api/v2/autorizacoes/condominio/{condominioId}?
+    [HttpGet("condominio/{condominioId}/NaData/{data}")]
+    [ProducesResponseType(typeof(IReadOnlyList<AutorizacaoDeAcesso>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> Listar(string? condominioId, DateOnly? data, CancellationToken ct)
+    {
+        var list = await _service.ListarAsync(condominioId, data, ct);
+        return Ok(list);
+    }
+
+    // GET api/v2/autorizacoes/{condominioId}/status/{status}
+    [HttpGet("{condominioId:guid}/status/{status}")]
+    [ProducesResponseType(typeof(IReadOnlyList<AutorizacaoDeAcesso>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> Listar(string? condominioId, string? status, CancellationToken ct)
+    {
+        var list = await _service.ListarAsync(condominioId, status, ct);
+        return Ok(list);
+    }
+
     // GET api/v2/autorizacoes?condominioId=...&codigoUnidade=...&status=...
     [HttpGet]
     [ProducesResponseType(typeof(IReadOnlyList<AutorizacaoDeAcesso>), StatusCodes.Status200OK)]

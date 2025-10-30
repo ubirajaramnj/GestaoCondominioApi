@@ -1,6 +1,7 @@
 ﻿using GestaoCondominio.ControlePortaria.Api.DTOs;
 using GestaoCondominio.ControlePortaria.Api.Model;
 using GestaoCondominio.ControlePortaria.Api.Repositories;
+using System.ComponentModel.DataAnnotations;
 
 namespace GestaoCondominio.ControlePortaria.Api.Services;
 
@@ -81,29 +82,36 @@ public sealed class AutorizacaoService : IAutorizacaoService
             QrCodePayload = null,
             Status = (req.Status?.Equals("autorizado", StringComparison.OrdinalIgnoreCase) ?? false)
                      ? StatusAutorizacao.Autorizado
-                     : StatusAutorizacao.Pendente,
+                     : StatusAutorizacao.Autorizado,
             CreatedAt = req.CreatedAt ?? DateTimeOffset.UtcNow,
             UpdatedAt = req.UpdatedAt ?? DateTimeOffset.UtcNow,
             CriadoPorUsuarioId = usuarioId
         };
-
-        entity.AtivarSeEmVigencia(DateTimeOffset.UtcNow, tz);
         entity.Logs.Add(LogEventoAutorizacao.Criacao(usuarioId, "Autorização criada"));
 
-        return await _repo.AddAsync(entity, ct);
+        var saved = await _repo.AddAsync(entity, ct);
+        //_ = EnviarComprovanteAsync(saved, ct);
+
+        return saved;
     }
 
-    public Task<AutorizacaoDeAcesso?> ObterAsync(Guid id, CancellationToken ct) => _repo.GetAsync(id, ct);
+    public async Task<AutorizacaoDeAcesso?> ObterAsync(Guid id, CancellationToken ct) => await _repo.GetAsync(id, ct);
 
-    public Task<IReadOnlyList<AutorizacaoDeAcesso>> ListarAsync(string? condominioId, string? unidadeCodigo, string? status, CancellationToken ct)
-        => _repo.QueryAsync(condominioId, unidadeCodigo, status, ct);
+    public async Task<IReadOnlyList<AutorizacaoDeAcesso>> ListarAsync(string? condominioId, CancellationToken ct)
+        => await _repo.QueryAsync(condominioId, ct);
+    public async Task<IReadOnlyList<AutorizacaoDeAcesso>> ListarAsync(string? condominioId, DateOnly? data, CancellationToken ct)
+        => await _repo.QueryAsync(condominioId, data, ct);
+    public async Task<IReadOnlyList<AutorizacaoDeAcesso>> ListarAsync(string? condominioId, string? status, CancellationToken ct)
+        => await _repo.QueryAsync(condominioId, status, ct);
+    public async Task<IReadOnlyList<AutorizacaoDeAcesso>> ListarAsync(string? condominioId, string? unidadeCodigo, string? status, CancellationToken ct)
+        => await _repo.QueryAsync(condominioId, unidadeCodigo, status, ct);
 
     public async Task<(bool Sucesso, string? Erro)> CancelarAsync(Guid id, string usuarioId, CancellationToken ct)
     {
         var a = await _repo.GetAsync(id, ct);
         if (a is null) return (false, "Autorização não encontrada.");
 
-        if (a.Status is StatusAutorizacao.Cancelado or StatusAutorizacao.Utilizado or StatusAutorizacao.Expirado)
+        if (a.Status is StatusAutorizacao.Cancelado or StatusAutorizacao.Finalizado or StatusAutorizacao.Expirado)
             return (false, "Não é possível cancelar no status atual.");
 
         a.Status = StatusAutorizacao.Cancelado;
@@ -125,13 +133,8 @@ public sealed class AutorizacaoService : IAutorizacaoService
         var a = await _repo.GetAsync(autorizacaoId, ct);
         if (a is null) return (false, "Autorização não encontrada.", null);
 
-        var tz = GetBrTimeZone();
-
-        // Ativar se em vigência
-        a.AtivarSeEmVigencia(DateTimeOffset.UtcNow, tz);
-
-        // Validar se está permitido agora
-        //return (false, "Autorização fora de vigência ou não permitida neste momento.", null);
+        if (!a.EstaEmVigencia(DateTimeOffset.UtcNow))
+            return (false, "Autorização fora de vigência.", null);
 
         // Se é primeira entrada, validar documento
         if (!a.TemCheckInRegistrado())
@@ -184,21 +187,16 @@ public sealed class AutorizacaoService : IAutorizacaoService
     {
         var list = await _repo.QueryAsync(null, null, null, ct);
         var a = list.FirstOrDefault(x => x.CodigoAcesso.Equals(codigo, StringComparison.OrdinalIgnoreCase));
+        
         if (a is null) return (false, "Código inválido.", null);
 
-        var tz = GetBrTimeZone();
-        a.AtivarSeEmVigencia(DateTimeOffset.UtcNow, tz);
-        return (false, "Autorização não está válida neste momento.", a);
+        // ← ALTERAR: Validar se está em vigência
+        if (!a.EstaEmVigencia(DateTimeOffset.UtcNow))
+            return (false, "Autorização fora de vigência.", a);
 
         return (true, null, a);
     }
 
     private static DayOfWeek ParseDay(string s) =>
         Enum.TryParse<DayOfWeek>(s, true, out var d) ? d : throw new ArgumentException($"Dia inválido: {s}");
-
-    private static TimeZoneInfo GetBrTimeZone()
-    {
-        try { return TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"); } // Windows
-        catch { return TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo"); } // Linux
-    }
 }

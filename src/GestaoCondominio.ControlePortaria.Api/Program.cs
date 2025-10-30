@@ -1,4 +1,5 @@
 using GestaoCondominio.ControlePortaria.Api.DTOs;
+using GestaoCondominio.ControlePortaria.Api.Infrastructure.Configuration;
 using GestaoCondominio.ControlePortaria.Api.Repositories;
 using GestaoCondominio.ControlePortaria.Api.Services;
 using Microsoft.Extensions.Options;
@@ -18,6 +19,8 @@ var config = new ConfigurationBuilder()
     .Build();
 
 builder.Configuration.AddConfiguration(config);
+
+TimeZoneConfiguration.Inicializar();
 
 // Add services to the container.
 builder.Services.AddSingleton<IUnidadeService>(sp =>

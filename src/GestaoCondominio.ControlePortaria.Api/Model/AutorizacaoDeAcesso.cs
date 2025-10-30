@@ -1,4 +1,6 @@
-﻿namespace GestaoCondominio.ControlePortaria.Api.Model
+﻿using GestaoCondominio.ControlePortaria.Api.Infrastructure.Configuration;
+
+namespace GestaoCondominio.ControlePortaria.Api.Model
 {
     public sealed class AutorizacaoDeAcesso
     {
@@ -24,7 +26,7 @@
         public DateOnly DataFim { get; init; }
 
         // Recorrência (válido quando Periodo = Recorrente)
-        public List<DayOfWeek>? DiasSemanaPermitidos { get; init; }
+        public List<DayOfWeek>? DiasSemanaPermitidos { get; set; }
         public TimeOnly? JanelaHorarioInicio { get; init; }
         public TimeOnly? JanelaHorarioFim { get; init; }
 
@@ -41,7 +43,18 @@
         public string CodigoAcesso { get; init; } = Guid.NewGuid().ToString("N")[..8].ToUpperInvariant();
         public string? QrCodePayload { get; init; }
 
-        public StatusAutorizacao Status { get; set; } = StatusAutorizacao.Pendente;
+        // Backing field para status
+        private StatusAutorizacao _status = StatusAutorizacao.Autorizado;  // ← ALTERAR para Autorizado
+        private TimeZoneInfo? _timeZone;
+
+        /// <summary>
+        /// Status da autorização. Calcula dinamicamente baseado nas regras de negócio.
+        /// </summary>
+        public StatusAutorizacao Status
+        {
+            get => CalcularStatusAtual();
+            set => _status = value;
+        }
 
         // Auditoria
         public DateTimeOffset CreatedAt { get; init; } = DateTimeOffset.UtcNow;
@@ -49,39 +62,36 @@
         public string CriadoPorUsuarioId { get; init; } = default!;
 
         // ===== NOVO: Histórico de Check-ins e Check-outs =====
-        public List<CheckInRegistro> CheckIns { get; } = new();
-        public List<CheckOutRegistro> CheckOuts { get; } = new();
+        public List<CheckInRegistro> CheckIns { get; set; } = new();
+        public List<CheckOutRegistro> CheckOuts { get; set; } = new();
 
-        public List<LogEventoAutorizacao> Logs { get; } = new();
+        public List<LogEventoAutorizacao> Logs { get; set; } = new();
 
-        // Ativa automaticamente quando a data atual está dentro da vigência.
-        public void AtivarSeEmVigencia(DateTimeOffset agoraUtc, TimeZoneInfo tz)
+        /// <summary>
+        /// Ativa automaticamente quando a data atual está dentro da vigência.
+        /// Nota: Agora apenas valida se está em vigência, pois o status é calculado dinamicamente.
+        /// </summary>
+        public bool EstaEmVigencia(DateTimeOffset agoraUtc, TimeZoneInfo? tz = null)
         {
-            var hoje = DateOnly.FromDateTime(TimeZoneInfo.ConvertTime(agoraUtc, tz).DateTime);
-            if (Status is StatusAutorizacao.Pendente &&
-                hoje >= DataInicio && hoje <= DataFim)
-            {
-                Status = StatusAutorizacao.Autorizado;
-                Logs.Add(LogEventoAutorizacao.Criacao("Sistema", "Autorização ativada automaticamente"));
-            }
+            var timeZone = tz ?? TimeZoneConfiguration.BrasilTimeZone;
+            var hoje = DateOnly.FromDateTime(TimeZoneInfo.ConvertTime(agoraUtc, timeZone).DateTime);
+
+            return hoje >= DataInicio && hoje <= DataFim;
         }
 
         // Verifica se a autorização permite acesso no momento atual (considera período e recorrência).
-        public bool EstaPermitidoAgora(DateTimeOffset agoraUtc, TimeZoneInfo tz)
+        public bool EstaPermitidoAgora(DateTimeOffset agoraUtc, TimeZoneInfo? tz = null)
         {
-            var local = TimeZoneInfo.ConvertTime(agoraUtc, tz).DateTime;
+            var timeZone = tz ?? TimeZoneConfiguration.BrasilTimeZone;
+            var local = TimeZoneInfo.ConvertTime(agoraUtc, timeZone).DateTime;
             var hoje = DateOnly.FromDateTime(local);
 
             if (Periodo == PeriodoAutorizacao.Intervalo)
             {
-                if (!DiasSemanaPermitidos.Contains(local.DayOfWeek)) return false;
-
-
                 var horaLocal = TimeOnly.FromDateTime(local);
                 return horaLocal >= JanelaHorarioInicio && horaLocal <= JanelaHorarioFim;
             }
 
-            // Periodo = Unico (qualquer horário do(s) dia(s) de vigência)
             return true;
         }
 
@@ -123,7 +133,7 @@
             var checkIn = CheckInRegistro.Criar(documentoId, usuarioPortariaId, observacoes);
             CheckIns.Add(checkIn);
 
-            Status = StatusAutorizacao.Utilizado;
+            _status = StatusAutorizacao.Utilizado;
             UpdatedAt = DateTimeOffset.UtcNow;
             Logs.Add(new(DateTimeOffset.UtcNow, usuarioPortariaId, "CheckIn", $"Check-in registrado. DocumentoId: {documentoId?.ToString() ?? "N/A"}"));
 
@@ -145,6 +155,65 @@
             Logs.Add(new(DateTimeOffset.UtcNow, usuarioPortariaId, "CheckOut", "Check-out registrado."));
 
             return (true, null);
+        }
+
+        /// <summary>
+        /// Calcula o status atual da autorização baseado nas regras de negócio.
+        /// 
+        /// Regras:
+        /// 1. Se Cancelado, permanece Cancelado.
+        /// 2. Se dataInicio < hoje e sem CheckIn/CheckOut, é Expirado.
+        /// 3. Se com CheckIn e CheckOut:
+        ///    - Se dataFim <= hoje, é Finalizado.
+        ///    - Se dataFim > hoje, permanece Utilizado.
+        /// 4. Se Periodo=Unico, dataInicio < hoje, com CheckIn mas sem CheckOut, é Utilizado.
+        /// 5. Se dataInicio <= hoje e sem CheckIn:
+        ///    - Se dataFim < hoje, é Expirado.
+        ///    - Caso contrário, é Autorizado.
+        /// 6. Se dataInicio > hoje, é Autorizado (ainda não começou).
+        /// </summary>
+        private StatusAutorizacao CalcularStatusAtual()
+        {
+            var tz = _timeZone ?? TimeZoneConfiguration.BrasilTimeZone;
+            var local = TimeZoneInfo.ConvertTime(DateTimeOffset.UtcNow, tz).DateTime;
+            var hoje = DateOnly.FromDateTime(local);
+
+            // Regra 1: Se Cancelado, permanece Cancelado
+            if (_status == StatusAutorizacao.Cancelado)
+                return StatusAutorizacao.Cancelado;
+
+            // Regra 2: Se dataInicio < hoje e sem CheckIn/CheckOut, é Expirado
+            if (hoje > DataInicio && !TemCheckInRegistrado() && CheckOuts.Count == 0)
+                return StatusAutorizacao.Expirado;
+
+            // Regra 3: Se com CheckIn e CheckOut
+            if (TemCheckInRegistrado() && !TemCheckInAberto())
+            {
+                // Se dataFim <= hoje, é Finalizado
+                if (hoje >= DataFim)
+                    return StatusAutorizacao.Finalizado;
+
+                // Se dataFim > hoje, permanece Utilizado
+                return StatusAutorizacao.Utilizado;
+            }
+
+            // Regra 4: Se Periodo=Unico, dataInicio < hoje, com CheckIn mas sem CheckOut, é Utilizado
+            if (Periodo == PeriodoAutorizacao.Unico && hoje >= DataInicio && TemCheckInRegistrado() && TemCheckInAberto())
+                return StatusAutorizacao.Utilizado;
+
+            // Regra 5: Se dataInicio <= hoje e sem CheckIn
+            if (hoje >= DataInicio)
+            {
+                // Se passou a dataFim, é Expirado
+                if (hoje > DataFim)
+                    return StatusAutorizacao.Expirado;
+
+                // Caso contrário, é Autorizado
+                return StatusAutorizacao.Autorizado;
+            }
+
+            // Regra 6: Se dataInicio > hoje, é Autorizado (ainda não começou)
+            return StatusAutorizacao.Autorizado;
         }
     }
 
@@ -181,9 +250,9 @@
 
     public enum StatusAutorizacao
     {
-        Pendente = 0,
-        Autorizado = 1,
-        Utilizado = 2,
+        Autorizado = 0,
+        Utilizado = 1,
+        Finalizado = 2,
         Expirado = 3,
         Cancelado = 4
     }

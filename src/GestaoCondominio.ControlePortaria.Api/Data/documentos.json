@@ -88,5 +88,35 @@
     "TamanhoBytes": 1433534,
     "ContentType": "image/jpeg",
     "CriadoEm": "2025-10-25T00:31:49.9548295+00:00"
+  },
+  {
+    "Id": "78071191-6734-40cc-8d87-37657db588f0",
+    "AutorizacaoId": "239b0d8d-02da-4229-8fd6-824ce31f7d90",
+    "Tipo": "identificacao",
+    "Nome": "image.jpg",
+    "CaminhoArmazenado": "78071191-6734-40cc-8d87-37657db588f0.jpg",
+    "TamanhoBytes": 3055716,
+    "ContentType": "image/jpeg",
+    "CriadoEm": "2025-10-29T18:19:40.5566373+00:00"
+  },
+  {
+    "Id": "78d62d75-98fa-48c6-98ae-0fd33c4338b2",
+    "AutorizacaoId": "239b0d8d-02da-4229-8fd6-824ce31f7d90",
+    "Tipo": "identificacao",
+    "Nome": "ff666bc5-aa0c-4640-9b3f-0443ae6f6add.png",
+    "CaminhoArmazenado": "78d62d75-98fa-48c6-98ae-0fd33c4338b2.png",
+    "TamanhoBytes": 473210,
+    "ContentType": "image/png",
+    "CriadoEm": "2025-10-29T21:13:57.8342307+00:00"
+  },
+  {
+    "Id": "5cdeaedf-d962-4ce2-af58-90a930335702",
+    "AutorizacaoId": "239b0d8d-02da-4229-8fd6-824ce31f7d90",
+    "Tipo": "identificacao",
+    "Nome": "ff666bc5-aa0c-4640-9b3f-0443ae6f6add.png",
+    "CaminhoArmazenado": "5cdeaedf-d962-4ce2-af58-90a930335702.png",
+    "TamanhoBytes": 473210,
+    "ContentType": "image/png",
+    "CriadoEm": "2025-10-29T21:16:03.7415981+00:00"
   }
 ]

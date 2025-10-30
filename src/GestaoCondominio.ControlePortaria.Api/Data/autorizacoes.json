@@ -27,7 +27,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "E72779AD",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-21T20:29:33.6411805+00:00",
     "UpdatedAt": "2025-10-21T20:29:33.6412566+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -63,7 +63,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "6FB7EE2B",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-22T00:44:17.2538509+00:00",
     "UpdatedAt": "2025-10-22T00:44:17.2538522+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -99,7 +99,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "BFD6B251",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-22T00:46:23.9445477+00:00",
     "UpdatedAt": "2025-10-22T00:46:23.9445478+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -135,7 +135,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "4AD69C0C",
-    "Status": "Utilizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-23T04:14:41.0568259+00:00",
     "UpdatedAt": "2025-10-23T04:37:23.7506455+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -170,7 +170,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "2E0D546D",
-    "Status": "Utilizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-24T13:49:51.8445895+00:00",
     "UpdatedAt": "2025-10-24T13:52:26.2004168+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -205,7 +205,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "A9336AF5",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-24T19:22:31.2716072+00:00",
     "UpdatedAt": "2025-10-24T19:22:31.2716086+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -241,7 +241,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "2A53DD7E",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-24T20:36:29.4072307+00:00",
     "UpdatedAt": "2025-10-24T20:36:29.4072321+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -277,7 +277,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "9671DB65",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-24T20:43:27.669238+00:00",
     "UpdatedAt": "2025-10-24T20:43:27.6692382+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -312,7 +312,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "FE97BB5F",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-24T20:45:23.1413716+00:00",
     "UpdatedAt": "2025-10-24T20:45:23.1413717+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -347,7 +347,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "0415BC70",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-24T20:56:13.0506742+00:00",
     "UpdatedAt": "2025-10-24T20:56:13.0506747+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -382,7 +382,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "A7FA2830",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-24T21:03:37.5936819+00:00",
     "UpdatedAt": "2025-10-24T21:03:37.5936821+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -418,7 +418,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "733BF4F9",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-24T21:46:39.1025585+00:00",
     "UpdatedAt": "2025-10-24T21:46:39.1025597+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -454,7 +454,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "538768A2",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-24T21:48:25.8841514+00:00",
     "UpdatedAt": "2025-10-24T21:48:25.8841515+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -489,7 +489,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "A0F82811",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-24T22:18:57.3949833+00:00",
     "UpdatedAt": "2025-10-24T22:18:57.3949844+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -525,7 +525,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "63DBF49A",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-24T22:29:42.8864507+00:00",
     "UpdatedAt": "2025-10-24T22:29:42.8864519+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -561,7 +561,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "F56BAE36",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-24T22:30:19.8458937+00:00",
     "UpdatedAt": "2025-10-24T22:30:19.8458939+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -597,7 +597,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "90BCBDB5",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-24T22:47:08.1257969+00:00",
     "UpdatedAt": "2025-10-24T22:47:08.1257972+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -633,7 +633,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "391DC1FC",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-24T22:57:02.9105454+00:00",
     "UpdatedAt": "2025-10-24T22:57:02.9105455+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -669,7 +669,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "FD9332AF",
-    "Status": "Utilizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-25T00:28:47.8859304+00:00",
     "UpdatedAt": "2025-10-25T00:31:54.6729134+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -705,7 +705,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "3969D821",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-27T21:14:35.3528607+00:00",
     "UpdatedAt": "2025-10-27T21:14:35.3528614+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -740,7 +740,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "3C15434D",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-27T21:19:23.7704583+00:00",
     "UpdatedAt": "2025-10-27T21:19:23.7704591+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -776,7 +776,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "535A360A",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-27T21:21:57.2130534+00:00",
     "UpdatedAt": "2025-10-27T21:21:57.2130543+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -811,7 +811,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "2A61AC47",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-27T21:23:00.0642183+00:00",
     "UpdatedAt": "2025-10-27T21:23:00.0642185+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -847,7 +847,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "BBB98F25",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-27T21:40:08.6315517+00:00",
     "UpdatedAt": "2025-10-27T21:40:08.6315526+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -883,7 +883,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "29FCCFAC",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-27T21:45:17.8483193+00:00",
     "UpdatedAt": "2025-10-27T21:45:17.8483202+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -919,7 +919,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "CA1DF52E",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-27T21:54:11.8180958+00:00",
     "UpdatedAt": "2025-10-27T21:54:11.8180966+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -955,7 +955,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "89D1BB4F",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-27T22:03:05.1728927+00:00",
     "UpdatedAt": "2025-10-27T22:03:05.1728936+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -991,7 +991,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "8152B101",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-27T22:06:37.6413582+00:00",
     "UpdatedAt": "2025-10-27T22:06:37.641359+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1027,7 +1027,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "291F9CF8",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-27T22:14:10.1259109+00:00",
     "UpdatedAt": "2025-10-27T22:14:10.1259118+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1062,7 +1062,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "9D7380F8",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-27T22:31:32.3170658+00:00",
     "UpdatedAt": "2025-10-27T22:31:32.3170666+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1097,7 +1097,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "787337E2",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-27T22:34:41.1819115+00:00",
     "UpdatedAt": "2025-10-27T22:34:41.1819117+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1132,7 +1132,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "E4714500",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-27T22:52:52.6647868+00:00",
     "UpdatedAt": "2025-10-27T22:52:52.6647869+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1168,7 +1168,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "5830318E",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T11:41:20.4777123+00:00",
     "UpdatedAt": "2025-10-28T11:41:20.4777131+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1203,7 +1203,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "86724446",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T14:44:27.2881401+00:00",
     "UpdatedAt": "2025-10-28T14:44:27.2881412+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1239,7 +1239,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "49BFB563",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T14:45:20.9808193+00:00",
     "UpdatedAt": "2025-10-28T14:45:20.9808194+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1275,7 +1275,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "8B5AF999",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T14:50:14.6444856+00:00",
     "UpdatedAt": "2025-10-28T14:50:14.6444857+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1311,7 +1311,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "0504C6A6",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T15:03:35.9413062+00:00",
     "UpdatedAt": "2025-10-28T15:03:35.9413064+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1347,7 +1347,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "9C9AB45C",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T15:04:40.1106628+00:00",
     "UpdatedAt": "2025-10-28T15:04:40.1106629+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1383,7 +1383,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "439FF0C6",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T17:07:20.637274+00:00",
     "UpdatedAt": "2025-10-28T17:07:20.6372741+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1419,7 +1419,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "A3FC7153",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T17:21:15.5121343+00:00",
     "UpdatedAt": "2025-10-28T17:21:15.5121345+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1455,7 +1455,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "3C64ABC9",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T17:23:12.9394287+00:00",
     "UpdatedAt": "2025-10-28T17:23:12.9394288+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1491,7 +1491,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "F58340C3",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T17:34:59.6998165+00:00",
     "UpdatedAt": "2025-10-28T17:34:59.6998166+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1526,7 +1526,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "2B0A2183",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T17:39:00.4588044+00:00",
     "UpdatedAt": "2025-10-28T17:39:00.4588046+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1562,7 +1562,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "7335F937",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T17:43:48.4740237+00:00",
     "UpdatedAt": "2025-10-28T17:43:48.4740238+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1598,7 +1598,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "385D7E42",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T17:57:45.4594016+00:00",
     "UpdatedAt": "2025-10-28T17:57:45.4594018+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1634,7 +1634,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "AB531493",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T17:59:58.6722796+00:00",
     "UpdatedAt": "2025-10-28T17:59:58.6722797+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1670,7 +1670,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "7D37BC85",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T19:22:56.6462452+00:00",
     "UpdatedAt": "2025-10-28T19:22:56.6462453+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1706,7 +1706,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "A60D2C9E",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T21:29:01.0976669+00:00",
     "UpdatedAt": "2025-10-28T21:29:01.097667+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1741,7 +1741,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "7CC32296",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T21:50:46.0697435+00:00",
     "UpdatedAt": "2025-10-28T21:50:46.0697441+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1777,7 +1777,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "AFB5F948",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T21:53:59.5171474+00:00",
     "UpdatedAt": "2025-10-28T21:53:59.5171475+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1813,7 +1813,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "6FF2C74F",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T22:03:02.8575489+00:00",
     "UpdatedAt": "2025-10-28T22:03:02.8575498+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1849,7 +1849,7 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "3D6CA63F",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T22:06:33.70923+00:00",
     "UpdatedAt": "2025-10-28T22:06:33.7092307+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
@@ -1885,18 +1885,109 @@
       "Ip": "A ser coletado pelo backend"
     },
     "CodigoAcesso": "72962C5D",
-    "Status": "Autorizado",
+    "Status": "Expirado",
     "CreatedAt": "2025-10-28T22:08:49.0311208+00:00",
     "UpdatedAt": "2025-10-28T22:08:49.0311217+00:00",
     "CriadoPorUsuarioId": "MORADOR:dummy",
     "CheckIns": [],
     "CheckOuts": [],
+    "Logs": []
+  },
+  {
+    "Id": "900d05cc-3ee4-4ba7-a10e-a1fb57cfa149",
+    "CondominioId": "SOLARITAC",
+    "Tipo": "Visitante",
+    "Periodo": "Unico",
+    "Nome": "Ubirajara Mendes Nunes Junior",
+    "Email": "ubirajara.mnj@gmail.com",
+    "Telefone": "21993901365",
+    "Cpf": "06497502769",
+    "Rg": "011124550",
+    "DataInicio": "2025-10-29",
+    "DataFim": "2025-10-29",
+    "Autorizador": {
+      "Nome": "UBIRAJARA MENDES NUNES JR",
+      "Telefone": "5521993901365",
+      "CodigoDaUnidade": "01J26",
+      "DataHora": "2025-10-29T16:49:06.899+00:00",
+      "DataHoraAutorizacao": "2025-10-29T16:49:06.899+00:00"
+    },
+    "InformacoesDispositivo": {
+      "DataHora": "2025-10-29T16:49:06.899+00:00",
+      "Dispositivo": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "Navegador": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "Linguagem": "en-US",
+      "Plataforma": "Win32",
+      "Ip": "A ser coletado pelo backend"
+    },
+    "CodigoAcesso": "1D556E1D",
+    "Status": "Autorizado",
+    "CreatedAt": "2025-10-29T16:49:07.0120973+00:00",
+    "UpdatedAt": "2025-10-29T16:49:07.0120976+00:00",
+    "CriadoPorUsuarioId": "MORADOR:dummy",
+    "CheckIns": [],
+    "CheckOuts": [],
+    "Logs": []
+  },
+  {
+    "Id": "239b0d8d-02da-4229-8fd6-824ce31f7d90",
+    "CondominioId": "SOLARITAC",
+    "Tipo": "Visitante",
+    "Periodo": "Unico",
+    "Nome": "Dario",
+    "Email": "ubirajara.mnj@gmail.com",
+    "Telefone": "21969013181",
+    "Cpf": "10706404769",
+    "Rg": "011125440",
+    "DataInicio": "2025-10-29",
+    "DataFim": "2025-10-29",
+    "Autorizador": {
+      "Nome": "UBIRAJARA MENDES NUNES JR",
+      "Telefone": "5521993901365",
+      "CodigoDaUnidade": "01J26",
+      "DataHora": "2025-10-29T18:18:05.89+00:00",
+      "DataHoraAutorizacao": "2025-10-29T18:18:05.89+00:00"
+    },
+    "InformacoesDispositivo": {
+      "DataHora": "2025-10-29T18:18:05.89+00:00",
+      "Dispositivo": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "Navegador": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "Linguagem": "en-US",
+      "Plataforma": "Win32",
+      "Ip": "A ser coletado pelo backend"
+    },
+    "CodigoAcesso": "403139CD",
+    "Status": "Finalizado",
+    "CreatedAt": "2025-10-29T18:18:06.1717651+00:00",
+    "UpdatedAt": "2025-10-29T21:42:35.5150906+00:00",
+    "CriadoPorUsuarioId": "MORADOR:dummy",
+    "CheckIns": [
+      {
+        "CheckInId": "778720ce-1691-44fd-aa9d-53888b01cce1",
+        "DataHora": "2025-10-29T21:19:55.0235646+00:00",
+        "DocumentoId": "5cdeaedf-d962-4ce2-af58-90a930335702",
+        "UsuarioPortariaId": "PORTARIA:dummy"
+      }
+    ],
+    "CheckOuts": [
+      {
+        "CheckOutId": "d040e0f1-66a4-4385-a10f-3bc51b2827bb",
+        "DataHora": "2025-10-29T21:42:35.5144346+00:00",
+        "UsuarioPortariaId": "PORTARIA:dummy"
+      }
+    ],
     "Logs": [
       {
-        "Quando": "2025-10-28T22:08:49.0317596+00:00",
-        "UsuarioId": "MORADOR:dummy",
-        "Tipo": "Criacao",
-        "Mensagem": "Autoriza\u00E7\u00E3o criada"
+        "Quando": "2025-10-29T21:19:55.0236164+00:00",
+        "UsuarioId": "PORTARIA:dummy",
+        "Tipo": "CheckIn",
+        "Mensagem": "Check-in registrado. DocumentoId: 5cdeaedf-d962-4ce2-af58-90a930335702"
+      },
+      {
+        "Quando": "2025-10-29T21:42:35.515091+00:00",
+        "UsuarioId": "PORTARIA:dummy",
+        "Tipo": "CheckOut",
+        "Mensagem": "Check-out registrado."
       }
     ]
   }

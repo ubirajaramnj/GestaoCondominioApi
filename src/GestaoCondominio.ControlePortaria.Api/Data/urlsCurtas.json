@@ -118,5 +118,35 @@
     "CriadoEm": "2025-10-28T22:08:01.3583824+00:00",
     "ExpiracaoEm": "2025-11-04T22:08:01.3583824+00:00",
     "Ativo": true
+  },
+  {
+    "Id": "rURBL5Fd",
+    "Nome": "UBIRAJARA MENDES NUNES JR",
+    "Telefone": "5521993901365",
+    "CodigoDaUnidade": "01J26",
+    "PalavraChave": "Malu",
+    "CriadoEm": "2025-10-29T16:48:22.3310377+00:00",
+    "ExpiracaoEm": "2025-11-05T16:48:22.3310377+00:00",
+    "Ativo": true
+  },
+  {
+    "Id": "d0HnMZy4",
+    "Nome": "UBIRAJARA MENDES NUNES JR",
+    "Telefone": "5521993901365",
+    "CodigoDaUnidade": "01J26",
+    "PalavraChave": "Malu",
+    "CriadoEm": "2025-10-29T18:12:17.7354533+00:00",
+    "ExpiracaoEm": "2025-11-05T18:12:17.7354533+00:00",
+    "Ativo": true
+  },
+  {
+    "Id": "0L8RsRIb",
+    "Nome": "UBIRAJARA MENDES NUNES JR",
+    "Telefone": "5521993901365",
+    "CodigoDaUnidade": "01J26",
+    "PalavraChave": "Malu",
+    "CriadoEm": "2025-10-29T18:55:16.2147386+00:00",
+    "ExpiracaoEm": "2025-11-05T18:55:16.2147386+00:00",
+    "Ativo": true
   }
 ]

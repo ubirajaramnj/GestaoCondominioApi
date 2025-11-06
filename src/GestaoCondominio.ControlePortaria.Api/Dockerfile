@@ -10,7 +10,8 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 # Copia apenas o arquivo de projeto primeiro (para cache eficiente)
-COPY ["/GestaoCondominio.ControlePortaria.Api/GestaoCondominio.ControlePortaria.Api.csproj", "/GestaoCondominio.ControlePortaria.Api/appsettings.json", "/GestaoCondominio.ControlePortaria.Api/Data/", "./"]
+COPY ["/GestaoCondominio.ControlePortaria.Api/GestaoCondominio.ControlePortaria.Api.csproj", "/GestaoCondominio.ControlePortaria.Api/appsettings.json", "./"]
+COPY ["GestaoCondominio.ControlePortaria.Api/Data/", "./Data/"]
 RUN dotnet restore "GestaoCondominio.ControlePortaria.Api.csproj"
 
 # Copia todo o restante do código-fonte
